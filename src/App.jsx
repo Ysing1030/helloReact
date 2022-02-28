@@ -1,36 +1,29 @@
 //创建外壳组件APP
-import React,{Component} from 'react'
-import Header from './header/header';
-import List from './list/list'
+import React, { Component } from 'react'
+import { Link, Route } from 'react-router-dom'
 
-class App extends Component{
-    
-    state = {
-        Git:[],
-        isFrist:true,
-        isLoad:false,
-        isError:''
-    }
+//引入子组件
+import Home from './components/Home'
+import About from './components/About'
 
-    // gitHub = (value) =>{
-    //     this.setState({Git:value}) 
-    // }
+class App extends Component {
 
-    updateAppState = (stateObj) =>{
-        this.setState(stateObj) 
-    }
-    
-    render(){
-        //通过 ...将状态中的全部赋值过去
-        return ( 
-            <div className="container">
-                <Header updateAppState = {this.updateAppState} />
-                
-                <List {...this.state} />
-            </div>    
-            
-        )
-    }
+
+	render() {
+
+		return (
+			<div>
+				<div className="nav">
+					<Link to={'/home'}>Home</Link>
+					<Link to={'/about'}>Home</Link>
+				</div>
+				<div className='container'>
+					<Route path='/home' component={Home}></Route>
+					<Route path='/about' component={About}></Route>
+				</div>
+			</div>
+		)
+	}
 }
 
 export default App  
